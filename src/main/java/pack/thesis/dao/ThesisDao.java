@@ -18,5 +18,7 @@ public interface ThesisDao extends JpaRepository<Thesis, Long> {
     List<Thesis> findByScienceField(String scienceField);
 
     List<Thesis> findByDissDefTime(Date date);
+
+
 }
 

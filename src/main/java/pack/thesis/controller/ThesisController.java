@@ -50,19 +50,19 @@ public class ThesisController {
     public List<Thesis> getThesisByScienceField(@PathVariable String field) {
         return thesisDao.findByScienceField(field);
     }
-    
-    @PostMapping(value = "/add")
+
+    @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus addThesis(@RequestBody Thesis thesis){
         return thesisDao.save(thesis) != null ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public HttpStatus delete(@RequestBody Long id){
+    public HttpStatus delete(@PathVariable Long id){
         thesisDao.delete(id);
         return HttpStatus.NO_CONTENT;
     }
 
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus updatePerson(@RequestBody Thesis thesis) {
         return thesisDao.save(thesis) != null ? HttpStatus.ACCEPTED : HttpStatus.BAD_REQUEST;
     }
